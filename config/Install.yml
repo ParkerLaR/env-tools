@@ -1,0 +1,55 @@
+HomebrewList:
+  kit:
+    - zsh
+    - powerlevel10k
+    - git
+    - go
+
+  cask:
+    - iterm2
+    - google-chrome
+    - google-cloud-sdk
+    - visual-studio-code
+
+
+
+VscodeExtensionList:
+  # vscode 中文化
+  - MS-CEINTL.vscode-language-pack-zh-hant
+  # vscode IDE code runner
+  - formulahendry.code-runner
+  # debug for characters
+  - nhoizey.gremlins
+  # vscode IDE code tools by coler 
+  - zxh404.vscode-proto3
+  # material icon theme (folder icon)
+  - PKief.material-icon-theme
+  # vscode IDE code indent rainbow
+  - oderwat.indent-rainbow
+
+  # support markdown
+  - yzhang.markdown-all-in-one
+
+  # support golang
+  - golang.go
+  # support golang test
+  - premparihar.gotestexplorer
+  # support golang parser json to struct
+  - quicktype.quicktype
+
+  # database client
+  - cweijan.dbclient-jdbc
+
+  
+  # todo tree
+  - Gruntfuggly.todo-tree
+  # support xml
+  - redhat.vscode-xml
+  # support yaml
+  - redhat.vscode-yaml
+  # gitLens
+  - eamodio.gitlens
+
+  # Github Copilot
+  - GitHub.copilot
+  - GitHub.copilot-chat
