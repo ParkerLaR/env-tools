@@ -40,7 +40,7 @@ func NewEnvService(pwd string) *EnvService {
 func (e *EnvService) XcodeInstall() (err error) {
 
 	cmd := exec.Command("sh", "-c", fmt.Sprintf("echo %s | sudo -S xcode-select --install", e.password))
-	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+	setSysProcAttr(cmd)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
@@ -68,7 +68,7 @@ func (e *EnvService) WaitXcodeInstall() bool {
 
 		default:
 			cmd := exec.Command("xcode-select", "-p")
-			cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+			setSysProcAttr(cmd)
 			cmd.Stdout = os.Stdout
 			cmd.Stderr = os.Stderr
 
@@ -85,7 +85,7 @@ func (e *EnvService) WaitXcodeInstall() bool {
 func (e *EnvService) HomebrewInstall() (err error) {
 
 	cmd := exec.Command("sh", "-c", fmt.Sprintf(`echo %s | sudo -S /bin/bash -c $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)`, e.password))
-	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+	setSysProcAttr(cmd)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
@@ -108,7 +108,7 @@ func (e *EnvService) BrewInstallFromKit() (err error) {
 	for _, kit := range kits {
 
 		cmd := exec.Command("sh", "-c", fmt.Sprintf(`echo %s | sudo -S brew install %s`, e.password, kit))
-		cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+		setSysProcAttr(cmd)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 
@@ -132,7 +132,7 @@ func (e *EnvService) BrewInstallFromCask() (err error) {
 	for _, cask := range casks {
 
 		cmd := exec.Command("sh", "-c", fmt.Sprintf(`echo %s | sudo -S brew install --cask %s`, e.password, cask))
-		cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+		setSysProcAttr(cmd)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 
@@ -150,7 +150,7 @@ func (e *EnvService) BrewInstallFromCask() (err error) {
 func (e *EnvService) OhMyZshInstall() (err error) {
 
 	cmd := exec.Command("sh", "-c", fmt.Sprintf(`echo %s | sudo -S sh -c "RUNZSH=no $(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`, e.password))
-	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+	setSysProcAttr(cmd)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
@@ -167,7 +167,7 @@ func (e *EnvService) OhMyZshInstall() (err error) {
 func (e *EnvService) SwitchToZshShell() (err error) {
 
 	cmd := exec.Command("sh", "-c", fmt.Sprintf(`echo %s | sudo -S chsh -s /bin/zsh`, e.password))
-	cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+	setSysProcAttr(cmd)
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
@@ -190,7 +190,7 @@ func (e *EnvService) VSCodeExtensionsInstall() (err error) {
 	for _, extension := range extList {
 
 		cmd := exec.Command("sh", "-c", fmt.Sprintf(`echo %s | sudo -S code --install-extension %s`, e.password, extension))
-		cmd.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+		setSysProcAttr(cmd)
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 

@@ -20,20 +20,20 @@ func EnvToolsInstall() (err error) {
 	// // 	return
 	// // }
 
-	// err = service.HomebrewInstall()
-	// if err != nil {
-	// 	return
-	// }
+	err = service.HomebrewInstall()
+	if err != nil {
+		return
+	}
 
-	// err = service.BrewInstallFromKit()
-	// if err != nil {
-	// 	return
-	// }
+	err = service.BrewInstallFromKit()
+	if err != nil {
+		return
+	}
 
-	// err = service.BrewInstallFromCask()
-	// if err != nil {
-	// 	return
-	// }
+	err = service.BrewInstallFromCask()
+	if err != nil {
+		return
+	}
 
 	err = service.VSCodeExtensionsInstall()
 	if err != nil {
